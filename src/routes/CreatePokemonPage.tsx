@@ -1,14 +1,12 @@
 import { Button, Col, Form, Input, InputNumber, Row, Typography } from 'antd';
-import { useNavigate } from 'react-router-dom';
 import { PokemonDetails } from './PokemonListPage';
 
 export const CreateUserPage = () => {
   const [form] = Form.useForm();
-  const navigate = useNavigate();
 
   const onFinish = async (values: PokemonDetails) => {
     /**
-     in real app, we would send post request, and on success navigate to crated pokemon.
+      in a real app, we would send post request, and on success navigate to crated pokemon.
       */
     // try {
     //   const response = await fetch('https://pokeapi.co/api/v2/pokemon', {
@@ -22,13 +20,12 @@ export const CreateUserPage = () => {
     //     throw new Error(`HTTP error: Status ${response.status}`);
     //   }
     //   const responseData: Pokemon = await response.json();
-    //   navigate(`/pokemon/${responseData.name}`);
+    //   navigate(`/pokemon/${responseData.name}/details`);
     // } catch (error) {
     //   console.log(error);
     // }
 
     console.log(values);
-    navigate(`/pokemon/${values.name}`);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -50,6 +47,21 @@ export const CreateUserPage = () => {
           <Col>
             <Form.Item name={'weight'} label={'Weight:'} rules={[{ required: true, message: 'Please enter the weight!' }]}>
               <InputNumber min={1} max={10000} addonAfter="kg" />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <Form.Item name={'height'} label={'Height:'} rules={[{ required: true, message: 'Please enter the hright!' }]}>
+              <InputNumber min={1} max={10000} addonAfter="ft" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Item name={'height'} label={'Height:'} rules={[{ required: true, message: 'Please enter the height!' }]}>
+              <InputNumber min={1} max={10000} addonAfter="ft" />
             </Form.Item>
           </Col>
         </Row>

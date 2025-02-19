@@ -1,4 +1,4 @@
-import { Button, Popconfirm } from 'antd';
+import { Button, Card, Col, Image, Popconfirm, Row } from 'antd';
 
 import 'antd/es/popconfirm/style/index.css';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -31,25 +31,35 @@ export const PokemonDetailsPage = () => {
       {isLoading && <div>loading</div>}
       {error && <div>Error: {error}</div>}
 
-      <h2>{data?.name.toUpperCase()}</h2>
       {data && (
-        <div>
-          <div>
-            <h4>Weight: </h4>
-            <p>{data.weight} kg</p>
-            <h4>Height: </h4>
-            <p>{data.height} feet</p>
-          </div>
-
-          <Popconfirm title={'Are you sure?'} onConfirm={handleDelete} okText="Yes" cancelText="No">
-            <Button type="primary" danger>
-              🗑️ Delete
-            </Button>
-          </Popconfirm>
-        </div>
+        <Card>
+          <Row align={'middle'} justify={'space-around'} gutter={8}>
+            <Col span={8}>
+              <h2>{data?.name.toUpperCase()}</h2>
+              <Image src={data?.sprites.front_default}></Image>
+            </Col>
+            <Col>
+              <h4>Weight:</h4>
+              <p>{data.weight} kg</p>
+              <h4>Height: </h4>
+              <p>{data.height} feet</p>
+            </Col>
+            <Col>
+              <h4>Types:</h4>
+              {data.types.map((type) => (
+                <p>{type.type.name}</p>
+              ))}
+            </Col>
+            <Col>
+              <Popconfirm title={'Are you sure?'} onConfirm={handleDelete} okText="Yes" cancelText="No">
+                <Button type="primary" danger>
+                  🗑️ Delete
+                </Button>
+              </Popconfirm>
+            </Col>
+          </Row>
+        </Card>
       )}
-
-      {}
     </div>
   );
 };

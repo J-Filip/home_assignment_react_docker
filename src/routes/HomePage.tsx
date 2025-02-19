@@ -1,8 +1,19 @@
 import { Space, Typography } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
+import { useContext } from 'react';
+import { AuthContext } from '../context/UserContext';
+const { Title, Text } = Typography;
 
 const HomePage = () => {
-  const { Title, Text } = Typography;
+  const { login, logout, isLoggedIn } = useContext(AuthContext);
+
+  const handleLogin = () => {
+    login();
+  };
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <Typography>
@@ -20,6 +31,17 @@ const HomePage = () => {
         <Text>• Docker for containerizing the application</Text>
         <Text>• Hosting (optional, e.g., Netlify, Vercel, Firebase, GitHub Pages)</Text>
       </Space>
+
+      <h2>Mock login</h2>
+      {isLoggedIn ? (
+        <div>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      ) : (
+        <div>
+          <button onClick={handleLogin}>Login</button>
+        </div>
+      )}
     </Typography>
   );
 };
