@@ -58,13 +58,6 @@ export const CreateUserPage = () => {
             </Form.Item>
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <Form.Item name={'height'} label={'Height:'} rules={[{ required: true, message: 'Please enter the height!' }]}>
-              <InputNumber min={1} max={10000} addonAfter="ft" />
-            </Form.Item>
-          </Col>
-        </Row>
 
         <Row>
           <Col>
