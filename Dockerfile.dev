@@ -16,5 +16,5 @@ COPY . .
 # Expose the port your app runs on
 EXPOSE 3000
 
-# Define the command to run your app
+# Tells Docker to run npm start when the container launches.
 CMD ["npm", "start"]
