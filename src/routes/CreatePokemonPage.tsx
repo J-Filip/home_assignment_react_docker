@@ -1,9 +1,14 @@
 import { Button, Col, Form, Input, InputNumber, Row, Typography } from 'antd';
 import { PokemonDetails } from './PokemonListPage';
+import { useNavigate } from 'react-router-dom';
 
-export const CreateUserPage = () => {
+interface CreatePokemonPageProps {
+  setResponse: React.Dispatch<React.SetStateAction<PokemonDetails>>;
+}
+
+export const CreatePokemonPage = (props: CreatePokemonPageProps) => {
   const [form] = Form.useForm();
-
+  const navigate = useNavigate();
   const onFinish = async (values: PokemonDetails) => {
     /**
       in a real app, we would send post request, and on success navigate to crated pokemon.
@@ -25,7 +30,8 @@ export const CreateUserPage = () => {
     //   console.log(error);
     // }
 
-    console.log(values);
+    props.setResponse(values);
+    navigate('success');
   };
 
   const onFinishFailed = (errorInfo: any) => {

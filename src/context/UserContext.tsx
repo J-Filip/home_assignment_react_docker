@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 
 interface Props {
-  children: React.ReactNode; // Or React.ReactElement if you expect only elements
+  children: React.ReactNode;
 }
 
 export const AuthContext = createContext({
