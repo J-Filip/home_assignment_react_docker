@@ -11,25 +11,25 @@ export const CreatePokemonPage = (props: CreatePokemonPageProps) => {
   const navigate = useNavigate();
   const onFinish = async (values: PokemonDetails) => {
     /**
-      in a real app, we would send post request, and on success navigate to crated pokemon.
-      */
-    // try {
-    //   const response = await fetch('https://pokeapi.co/api/v2/pokemon', {
-    //     method: 'POST',
-    //     body: JSON.stringify(values),
-    //     headers: {
-    //       'Content-type': 'application/json; charset=UTF-8',
-    //     },
-    //   });
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error: Status ${response.status}`);
-    //   }
-    //   const responseData: Pokemon = await response.json();
-    //   navigate(`/pokemon/${responseData.name}/details`);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      * in a real app, we would send post request, and on success navigate to crated pokemon.
 
+    try {
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon', {
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error: Status ${response.status}`);
+      }
+      const responseData: Pokemon = await response.json();
+      navigate(`/pokemon/${responseData.name}/details`);
+    } catch (error) {
+      console.log(error);
+    }
+ */
     props.setResponse(values);
     navigate('success');
   };

@@ -17,9 +17,7 @@ const HomePage = () => {
 
   return (
     <Typography>
-      <Title level={2} style={{ textAlign: 'center' }}>
-        React Demo App
-      </Title>
+      <Title level={2}>React Demo App</Title>
 
       <Paragraph>Job interview home assignment for Web Developer position.</Paragraph>
 
